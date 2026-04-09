@@ -34,27 +34,33 @@
 
       <!-- PHONES -->
       <div class="lg:col-span-6 relative">
-        <div class="relative max-w-[560px] mx-auto aspect-[5/4]">
-          <!-- Back phone (left) -->
+        <div class="relative max-w-[560px] mx-auto aspect-[5/4] phones-wrap">
+          <!-- Back phone (left) — Listen and pick one option -->
           <img
             src="/images/phone-hero-scenario.webp"
             alt="Scenario selection in DuoBrain app"
-            class="absolute left-0 top-[12%] w-[38%] -rotate-[6deg] drop-shadow-soft"
+            class="phone phone--left"
             loading="eager"
+            width="688"
+            height="1471"
           />
-          <!-- Center phone (main) -->
+          <!-- Center phone (main) — Good job -->
           <img
             src="/images/phone-hero-score.webp"
             alt="Score and AI analysis in DuoBrain app"
-            class="absolute left-[32%] top-0 w-[42%] z-10 drop-shadow-soft"
+            class="phone phone--center"
             loading="eager"
+            width="930"
+            height="2000"
           />
-          <!-- Front phone (right) -->
+          <!-- Front phone (right) — Brain insights -->
           <img
             src="/images/phone-hero-insights.webp"
             alt="Brain insights in DuoBrain app"
-            class="absolute right-0 top-[8%] w-[38%] rotate-[6deg] drop-shadow-soft"
+            class="phone phone--right"
             loading="eager"
+            width="688"
+            height="1471"
           />
         </div>
       </div>
@@ -62,3 +68,71 @@
     </div>
   </div>
 </section>
+
+<style>
+  .phones-wrap {
+    /* Let the center phone breathe at the top a bit */
+    padding-top: 2%;
+  }
+
+  .phone {
+    position: absolute;
+    /* Tight, dark, physical-looking shadow that follows the phone silhouette */
+    filter:
+      drop-shadow(0 24px 40px rgba(11, 34, 57, 0.22))
+      drop-shadow(0 6px 12px rgba(11, 34, 57, 0.14));
+    will-change: transform;
+    transition: transform 0.4s ease;
+  }
+
+  /* Back-left phone: Listen and pick one option
+     — sits LOW and LEFT, peeking out from behind the center */
+  .phone--left {
+    left: 2%;
+    top: 18%;
+    width: 36%;
+    transform: rotate(-8deg);
+    transform-origin: center bottom;
+    z-index: 1;
+  }
+
+  /* Center hero phone: Good job!
+     — NOT much bigger than the others, just frontmost and straight */
+  .phone--center {
+    left: 30%;
+    top: 4%;
+    width: 40%;
+    transform: rotate(0deg);
+    z-index: 3;
+  }
+
+  /* Back-right phone: Brain insights
+     — mirror of the left phone, same height, same size */
+  .phone--right {
+    right: 2%;
+    top: 18%;
+    width: 36%;
+    transform: rotate(8deg);
+    transform-origin: center bottom;
+    z-index: 2;
+  }
+
+  /* Subtle hover lift on desktop only */
+  @media (hover: hover) and (min-width: 1024px) {
+    .phones-wrap:hover .phone--left   { transform: rotate(-10deg) translateY(-4px); }
+    .phones-wrap:hover .phone--center { transform: rotate(0deg)   translateY(-6px); }
+    .phones-wrap:hover .phone--right  { transform: rotate(10deg)  translateY(-4px); }
+  }
+
+  /* Mobile tweak: soften shadows + slightly larger center */
+  @media (max-width: 640px) {
+    .phone--left   { width: 36%; top: 20%; left: 0; }
+    .phone--center { width: 42%; top: 6%; }
+    .phone--right  { width: 36%; top: 20%; right: 0; }
+    .phone {
+      filter:
+        drop-shadow(0 14px 24px rgba(11, 34, 57, 0.20))
+        drop-shadow(0 4px 8px rgba(11, 34, 57, 0.12));
+    }
+  }
+</style>
