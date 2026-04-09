@@ -1,0 +1,54 @@
+---
+const steps = [
+  {
+    n: 1,
+    title: 'Pick a real scenario',
+    body: "A meeting where you're getting talked over. An investor who says your market is too small. A co-founder you're about to have it out with. 108 situations. New ones weekly.",
+  },
+  {
+    n: 2,
+    title: 'Make your call',
+    body: "Choose how you'd respond. No right or wrong — your instinct under pressure is the data. Every answer is valid. Your pattern is what we analyze.",
+  },
+  {
+    n: 3,
+    title: 'Get brutal AI feedback',
+    body: "Exactly what your choice revealed about you. What you're strong at. What's costing you without you realizing it. And what to do differently next time.",
+  },
+];
+---
+<section id="how" class="py-20 sm:py-28 bg-mint">
+  <div class="container-x">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-6">
+        <div class="eyebrow mb-5">How it works</div>
+        <h2 class="text-h2 text-balance mb-6">
+          Not a course.<br />Not theory.<br />
+          <span class="display-italic">Actual reps.</span>
+        </h2>
+        <p class="text-muted text-base sm:text-lg leading-relaxed max-w-xl mb-10">
+          The reason you freeze isn't that you don't know what to say. It's that you've never practiced saying it under pressure. DuoBrain fixes that.
+        </p>
+
+        <ol class="space-y-6">
+          {steps.map((s) => (
+            <li class="flex gap-4">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-ink text-white font-extrabold flex items-center justify-center text-sm">{s.n}</span>
+              <div>
+                <h3 class="font-extrabold text-lg text-ink mb-1">{s.title}</h3>
+                <p class="text-muted text-sm sm:text-base leading-relaxed">{s.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="lg:col-span-6 relative">
+        <div class="flex gap-3 sm:gap-5 justify-center lg:justify-end">
+          <img src="/images/phone-how-scenario.webp" alt="Scenario screen" class="w-[46%] max-w-[280px] drop-shadow-soft" />
+          <img src="/images/phone-how-score.webp" alt="Score screen" class="w-[46%] max-w-[280px] drop-shadow-soft mt-6" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

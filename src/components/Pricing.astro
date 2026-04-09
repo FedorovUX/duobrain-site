@@ -1,0 +1,65 @@
+---
+const perks = [
+  { icon: '🍉', bold: 'Master all 200+ work and business', rest: 'quests with right solutions for each.' },
+  { icon: '💬', bold: 'Get advanced Neuro Analysis', rest: 'after every attempt to get better faster' },
+  { icon: '🧠', bold: 'Reveal your super-strength', rest: 'with advanced behavioral analysis.' },
+  { icon: '😎', bold: 'Stand out in Leaderboard', rest: 'with premium avatars for your profile.' },
+];
+
+const freeItems = [
+  { icon: '📅', bold: '3 daily quest', rest: '— new scenarios refreshes every 24h' },
+  { icon: '💪', bold: 'Brutal AI feedback', rest: 'with personal recommendations' },
+  { icon: '🏆', bold: 'Competitive Community', rest: 'League' },
+  { icon: '🏅', bold: 'Daily rewards', rest: 'for the most active DuoBrainers' },
+];
+---
+<section id="pricing" class="py-20 sm:py-28 bg-cream">
+  <div class="container-x max-w-3xl">
+    <div class="text-center mb-12">
+      <div class="eyebrow mb-5">Pricing</div>
+      <h2 class="text-h2 text-balance">
+        Rush for success with<br />
+        <span class="display-italic text-gold">Premium</span> perks
+      </h2>
+    </div>
+
+    <!-- Premium perks grid -->
+    <div class="grid sm:grid-cols-2 gap-4 mb-4">
+      {perks.map((p) => (
+        <div class="bg-white rounded-2xl p-5 flex gap-3 items-start">
+          <span class="text-xl flex-shrink-0">{p.icon}</span>
+          <p class="text-sm sm:text-base leading-snug">
+            <strong class="text-ink">{p.bold}</strong> <span class="text-muted">{p.rest}</span>
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Full-width perk -->
+    <div class="bg-white rounded-2xl p-5 flex gap-3 items-start mb-8">
+      <span class="text-xl flex-shrink-0">💪</span>
+      <p class="text-sm sm:text-base leading-snug">
+        <strong class="text-ink">Early access and tech updates</strong> <span class="text-muted">for our premium DuoBrainers.</span>
+      </p>
+    </div>
+
+    <!-- Starting plan card -->
+    <div class="bg-white rounded-3xl p-6 sm:p-8">
+      <h3 class="font-extrabold text-xl text-ink">Starting plan</h3>
+      <p class="text-muted text-sm mb-5">Free for everyone</p>
+
+      <div class="space-y-2 mb-6">
+        {freeItems.map((item) => (
+          <div class="bg-mist-50 rounded-xl p-4 flex gap-3 items-start">
+            <span class="text-lg flex-shrink-0">{item.icon}</span>
+            <p class="text-sm sm:text-base leading-snug">
+              <strong class="text-ink">{item.bold}</strong> <span class="text-muted">{item.rest}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <a href="#download" class="btn-primary w-full justify-center">Download for Free</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+---
+const cards = [
+  {
+    tag: 'Meetings',
+    tagColor: 'bg-pink text-[#C9525B]',
+    quote: '"You share an idea. Someone repeats it 5 minutes later and gets all the credit."',
+    body: "You had the right answer. You just couldn't get people to actually hear it. That's not a talent problem — it's a presence problem.",
+  },
+  {
+    tag: 'Hard conversations',
+    tagColor: 'bg-green text-[#3B8F66]',
+    quote: '"You know what needs to be said. You keep finding reasons not to say it."',
+    body: 'With your co-founder. Your manager. A client about to walk. The longer you wait, the more it costs — in trust, in revenue, in self-respect.',
+  },
+  {
+    tag: 'Startup pitch',
+    tagColor: 'bg-lilac text-[#5B5FCF]',
+    quote: `"The investor says 'I don't see the market' and you go completely blank."`,
+    body: "You've built something real. But the moment someone challenges you in the room, you lose the thread. The deal dies in the silence.",
+  },
+  {
+    tag: 'Career',
+    tagColor: 'bg-blue text-[#3B6BA5]',
+    quote: '"You do everything right and still get passed over by people half as sharp."',
+    body: "You're thorough. You deliver. But somehow the room never sees it. The promotions and deals go to people who just know how to hold a room.",
+  },
+];
+---
+<section class="py-20 sm:py-28 bg-white">
+  <div class="container-x">
+    <div class="grid lg:grid-cols-12 gap-8 mb-14">
+      <div class="lg:col-span-8">
+        <div class="eyebrow mb-5">You know this feeling</div>
+        <h2 class="text-h2 text-balance">
+          The problem isn't your talent.<br />
+          It's the <span class="display-italic">5 seconds</span> before you speak.
+        </h2>
+        <p class="mt-6 text-muted max-w-xl text-base sm:text-lg leading-relaxed">
+          70% of high achievers feel like they're not being seen for what they're actually capable of. The gap isn't skill — it's how you show up under pressure.
+        </p>
+      </div>
+      <div class="lg:col-span-4 flex items-start lg:justify-end gap-3 lg:gap-4">
+        <img src="/images/avatar-1-glasses.webp" alt="" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full" />
+        <img src="/images/avatar-2-peace.webp" alt="" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full -ml-5 sm:-ml-6" />
+        <img src="/images/avatar-3-hoodie.webp" alt="" class="w-16 h-16 sm:w-20 sm:h-20 rounded-full -ml-5 sm:-ml-6" />
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      {cards.map((c, i) => (
+        <div class={`rounded-2xl p-6 sm:p-8 ${['bg-pink', 'bg-green', 'bg-lilac', 'bg-blue'][i]}`}>
+          <span class={`inline-flex items-center gap-2 px-3 py-1 rounded-pill text-xs font-bold bg-white/70 ${c.tagColor.split(' ')[1]}`}>
+            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+            {c.tag}
+          </span>
+          <p class="mt-4 font-bold italic text-ink text-base sm:text-lg leading-snug">{c.quote}</p>
+          <p class="mt-3 text-muted text-sm sm:text-base leading-relaxed">{c.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

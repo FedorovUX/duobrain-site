@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout
+  title={`${post.data.title} — DuoBrain`}
+  description={post.data.description}
+  canonical={post.data.canonical}
+>
+  <Header />
+  <main class="py-16 sm:py-24">
+    <article class="container-x max-w-2xl">
+      <a href="/blog" class="text-sm font-semibold text-muted hover:text-ink mb-8 inline-block">← All posts</a>
+
+      <header class="mb-10">
+        <time datetime={post.data.publishDate.toISOString()} class="text-xs font-bold tracking-wider uppercase text-muted">
+          {formatDate(post.data.publishDate)}
+        </time>
+        <h1 class="text-h2 text-balance mt-3 mb-4">{post.data.title}</h1>
+        <p class="text-lg text-muted leading-relaxed">{post.data.description}</p>
+        <div class="mt-6 text-sm text-muted">By {post.data.author}</div>
+      </header>
+
+      <div class="prose-custom">
+        <Content />
+      </div>
+
+      {post.data.canonical && (
+        <p class="mt-12 text-xs text-muted border-t border-mist-200 pt-6">
+          Originally published at <a href={post.data.canonical} class="underline">{new URL(post.data.canonical).hostname}</a>.
+        </p>
+      )}
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style is:global>
+  .prose-custom {
+    @apply text-ink text-[17px] leading-[1.75];
+  }
+  .prose-custom > * + * { margin-top: 1.25em; }
+  .prose-custom h2 {
+    @apply text-2xl sm:text-3xl font-extrabold text-ink mt-12 mb-4 text-balance;
+  }
+  .prose-custom h3 {
+    @apply text-xl sm:text-2xl font-extrabold text-ink mt-10 mb-3;
+  }
+  .prose-custom p { @apply text-ink/85; }
+  .prose-custom a {
+    @apply text-ink underline underline-offset-2 decoration-ink/30 hover:decoration-ink;
+  }
+  .prose-custom strong { @apply text-ink font-bold; }
+  .prose-custom em { font-family: 'Fraunces', serif; font-style: italic; }
+  .prose-custom ul, .prose-custom ol {
+    @apply pl-5 space-y-2;
+  }
+  .prose-custom ul { list-style: disc; }
+  .prose-custom ol { list-style: decimal; }
+  .prose-custom blockquote {
+    @apply border-l-4 border-ink pl-5 italic text-ink/80 my-8;
+    font-family: 'Fraunces', serif;
+  }
+  .prose-custom code {
+    @apply bg-mist-100 px-1.5 py-0.5 rounded text-sm;
+  }
+  .prose-custom pre {
+    @apply bg-ink text-white p-5 rounded-xl overflow-x-auto text-sm;
+  }
+  .prose-custom pre code { @apply bg-transparent p-0; }
+  .prose-custom img { @apply rounded-2xl my-8; }
+  .prose-custom hr { @apply border-mist-200 my-12; }
+</style>

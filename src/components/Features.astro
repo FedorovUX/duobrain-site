@@ -1,0 +1,35 @@
+---
+const features = [
+  { icon: '🎯', title: '200+ Real Scenarios', body: 'Workplace conflicts, investor pushback, startup pivots, sales objections, toxic dynamics. New quests added every week.' },
+  { icon: '⚡', title: 'NeuroGuide AI Coach', body: 'Deep analysis of every decision. What worked, what missed, and exactly what to do differently next time.' },
+  { icon: '📅', title: 'Daily Quests', body: 'A fresh scenario every day. 5 minutes. The kind of habit that compounds into a completely different person in 90 days.' },
+  { icon: '🧠', title: 'Brain Insights', body: 'Your behavioral profile across Drive, Influence, Support & Clarity. Updates after every quest. Gets more accurate over time.' },
+  { icon: '🏆', title: 'Community League', body: 'See how your instincts rank against 10,000+ professionals worldwide. Where do you actually stand?' },
+  { icon: '🔥', title: 'Challenges', body: 'Multi-week tracks targeting the patterns holding you back — glass ceilings, invisible meetings, high-stakes pitches.' },
+];
+---
+<section id="features" class="py-20 sm:py-28 bg-white">
+  <div class="container-x">
+    <div class="mb-14">
+      <div class="eyebrow mb-5">Features</div>
+      <h2 class="text-h2 text-balance max-w-3xl">
+        Everything you need<br />
+        to show up <span class="display-italic">differently.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
+      {features.map((f) => (
+        <div class="flex gap-5">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-mist flex items-center justify-center text-xl">
+            {f.icon}
+          </div>
+          <div>
+            <h3 class="font-extrabold text-lg text-ink mb-1.5">{f.title}</h3>
+            <p class="text-muted text-sm sm:text-base leading-relaxed">{f.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
